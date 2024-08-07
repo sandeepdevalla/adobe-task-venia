@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Store App</title>
+    <script type="module" src="/main.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+
+  <body class="page">
+    <!-- header and navigation-->
+    <header class="header page__header">
+      <div class="page__header-content">
+        <div class="page__header-content_title">VENIA</div>
+        <div class="page__header-content_menu">
+          <div>Home</div>
+          <div>Men</div>
+          <div>Women</div>
+          <div>Smart Gear</div>
+        </div>
+        <div class="page__header-content_search-box">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search for product"
+          />
+        </div>
+      </div>
+    </header>
+    <div id="app">
+      <div class="app__banner">
+        <div class="app__banner_title">
+          <div>Men's</div>
+          <div>Outerwear</div>
+        </div>
+        <div class="app__banner_image">
+          <img src="./public/jeans_banner.png" alt="banner" />
+        </div>
+      </div>
+      <div class="main__row">
+        <div class="main__filters-container">
+          <div class="main__filters">
+            <div class="main__filters_brudcrumb">
+              Clothing / Men's / <span class="active-screen"> Outerwear</span>
+            </div>
+            <div class="main__filters_heading">Filters</div>
+            <div class="line"></div>
+            <div class="main__filters_categories-title">Categories</div>
+            <div class="main__filters_categories"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+        <div class="main__products-container">
+          <div class="main__products">
+            <div class="main__products_header">
+              <div class="count"></div>
+              <div class="page__header-content_search-box">
+                <select id="sortProduct">
+                  <option disabled selected>Sort Products</option>
+                  <option value="asc">Price (Low - High)</option>
+                  <option value="desc">Price (High - Low)</option>
+                </select>
+              </div>
+            </div>
+            <div id="products-container" class="products__container">
+              Products Loading . . .
+            </div>
+            <div id="loadMore" class="products_load-more">Load More</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <!-- <footer class="footer page__footer"></footer> -->
+  </body>
+</html>
