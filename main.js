@@ -8,6 +8,7 @@ const addEventListeners = () => {
   // For Searchbox
   document.getElementById('searchInput').addEventListener('input', (e) => {
     const productListBuffer = JSON.parse(JSON.stringify(productList));
+    loadMoreIcon.style.display = e.currentTarget.value ? 'none' : 'block';
     renderProducts(
       productListBuffer.filter((product) =>
         product.title.includes(e.currentTarget.value)
@@ -30,6 +31,7 @@ const addEventListeners = () => {
   // on Load More Click
   const loadMoreIcon = document.getElementById('loadMore');
   loadMoreIcon.addEventListener('click', function () {
+    productList = totalProducts;
     renderProducts(totalProducts);
     loadMoreIcon.style.display = 'none';
   });
@@ -42,8 +44,16 @@ const getProducts = async () => {
     totalProducts = JSON.parse(JSON.stringify(products));
     renderProducts(products.splice(1, 10));
     productList = products;
-    const categories = [...new Set(products.map((item) => item.category))];
-    renderCategories(categories);
+    const categories = [...new Set(totalProducts.map((item) => item.category))];
+    const categoriesContainer = document.getElementsByClassName(
+      'main__filters_categories'
+    );
+    const sideCategoriesContainer = document.getElementsByClassName(
+      'side__filters_categories'
+    );
+
+    renderCategories(categories, categoriesContainer);
+    renderCategories(categories, sideCategoriesContainer);
   } catch (err) {
     console.error(err);
   }
@@ -74,7 +84,7 @@ const renderProducts = (products) => {
     innerContainer.appendChild(priceElement);
 
     const heartElement = document.createElement('i');
-    heartElement.setAttribute('class', 'fa-light fa-heart');
+    heartElement.setAttribute('class', 'fa fa-heart-o');
     innerContainer.appendChild(heartElement);
 
     container.appendChild(innerContainer);
@@ -84,11 +94,7 @@ const renderProducts = (products) => {
   productsCountElement[0].innerText = products.length + ' Results';
 };
 
-const renderCategories = (categories) => {
-  const categoriesContainer = document.getElementsByClassName(
-    'main__filters_categories'
-  );
-
+const renderCategories = (categories, container) => {
   for (let i = 0; i < categories.length; i++) {
     const category = categories[i];
     const innerContainer = document.createElement('div');
@@ -104,7 +110,7 @@ const renderCategories = (categories) => {
     categoryElement.innerText = category;
     innerContainer.appendChild(categoryElement);
 
-    categoriesContainer[0].appendChild(innerContainer);
+    container[0].appendChild(innerContainer);
   }
 };
 

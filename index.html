@@ -7,17 +7,19 @@
     <script type="module" src="/main.js"></script>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+    " />
   </head>
 
   <body class="page">
     <!-- header and navigation-->
     <header class="header page__header">
       <div class="page__header-content">
+        <div onclick="openNav()" class="page__header_menu-bar">&#9776;</div>
         <div class="page__header-content_title">VENIA</div>
         <div class="page__header-content_menu">
-          <div>Home</div>
+          <div class="menu_home">Home</div>
           <div>Men</div>
           <div>Women</div>
           <div>Smart Gear</div>
@@ -76,5 +78,27 @@
     </div>
     <!-- footer -->
     <!-- <footer class="footer page__footer"></footer> -->
+    <div id="mySidenav" class="sidenav main__filters">
+      <div class="side__filters_heading">Filters</div>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <div class="side__line"></div>
+      <div class="side__filters_categories-title">Categories</div>
+      <div class="side__filters_categories"></div>
+      <div class="side__line"></div>
+      <div class="products_load-more side__results_button" onclick="closeNav()">
+        See Results
+      </div>
+    </div>
+    <script>
+      function openNav() {
+        document.getElementById('mySidenav').style.width = '250px';
+      }
+
+      function closeNav() {
+        document.getElementById('mySidenav').style.width = '0';
+      }
+    </script>
   </body>
 </html>
